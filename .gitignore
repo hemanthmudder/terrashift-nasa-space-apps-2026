@@ -1,0 +1,29 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Raw downloaded data
+data/raw/*
+!data/raw/.gitkeep
+
+# Build files
+dist/
+build/
+coverage/
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
