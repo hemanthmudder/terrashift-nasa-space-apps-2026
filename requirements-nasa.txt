@@ -1,0 +1,7 @@
+# NASA POWER pipeline (src/pipeline/fetch_nasa_power.py, clean_nasa_power.py)
+#
+# No third-party packages are required. The fetch, cleaning and test code use
+# only the Python standard library (urllib, json, csv, hashlib, datetime,
+# unittest). Tested with Python 3.14.
+#
+# Run tests:  python3 -m unittest discover -s tests -p "test_nasa_power.py" -v
