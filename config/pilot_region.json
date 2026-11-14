@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "status": "approved",
+  "approved_on": "2026-11-14",
+  "region": {
+    "id": "ia-story-19169",
+    "name": "Story County, Iowa",
+    "state": "IA",
+    "fips": "19169",
+    "ssurgo_area_symbol": "IA169",
+    "centroid": {
+      "latitude": 42.0375,
+      "longitude": -93.4661,
+      "source": "US Census TIGERweb internal point (INTPTLAT/INTPTLON)"
+    },
+    "land_area_km2": 1482.88,
+    "legacy_data_folder": "data/processed/iowa-story-co"
+  },
+  "analysis_period": {
+    "climate_start": "1991-01-01",
+    "climate_end": "2025-12-31",
+    "climate_baseline": "1991-2020",
+    "growing_season": {"start_mmdd": "04-01", "end_mmdd": "10-31"},
+    "cdl_start_year": 2008,
+    "cdl_end_year": null,
+    "cdl_end_year_note": "Set to the latest released CDL year after confirming on CroplandCROS."
+  },
+  "nasa_power": {
+    "endpoint": "https://power.larc.nasa.gov/api/temporal/daily/point",
+    "community": "AG",
+    "parameters": ["T2M", "T2M_MAX", "T2M_MIN", "PRECTOTCORR", "RH2M", "WS2M", "ALLSKY_SFC_SW_DWN", "GWETTOP", "GWETROOT"],
+    "fill_value": -999.0
+  },
+  "unselected_candidates": [
+    {"name": "York County, Nebraska", "fips": "31185", "ssurgo_area_symbol": "NE185", "reason": "73% of land in farms irrigated (2022 Census)"},
+    {"name": "Finney County, Kansas", "fips": "20055", "ssurgo_area_symbol": "KS055", "reason": "Runner-up; needs irrigated-field map and groundwater data"}
+  ]
+}
