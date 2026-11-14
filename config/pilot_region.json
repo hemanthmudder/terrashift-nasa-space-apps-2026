@@ -23,7 +23,12 @@
     "growing_season": {"start_mmdd": "04-01", "end_mmdd": "10-31"},
     "cdl_start_year": 2008,
     "cdl_end_year": 2025,
-    "cdl_end_year_note": "Iowa 2025 CDL confirmed downloadable via CropScape on 2026-11-14. The 2025 national release is 10 m; earlier years are 30 m. Confirm pixel size on ingest and harmonise before multi-year comparison."
+    "cdl_resolution_m": 30,
+    "cdl_products": {
+      "2008-2023": "NASS native 30 m CDL",
+      "2024-2025": "NASS official resampled 30 m national CDL (native resolution is 10 m)"
+    },
+    "cdl_end_year_note": "NASS native CDL resolution is 30 m for 2008-2023 and 10 m for 2024 and 2025. The MVP uses a consistent 30 m series: native 30 m for 2008-2023 and the official NASS resampled 30 m national products for 2024-2025. Iowa 2025 files were confirmed downloadable via CropScape on 2026-11-14, but their pixel size has not been verified; do not assume they are 30 m."
   },
   "nasa_power": {
     "endpoint": "https://power.larc.nasa.gov/api/temporal/daily/point",

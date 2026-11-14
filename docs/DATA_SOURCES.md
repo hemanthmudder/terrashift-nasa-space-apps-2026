@@ -21,7 +21,7 @@ Anything not yet verified is marked **(to confirm)**.
 | Dataset | Type | Resolution | Coverage used | Access |
 |---|---|---|---|---|
 | NASA POWER Daily API | Point (model grid) | ½° × ⅝° (≈55 × 52 km) meteorology; 1° × 1° solar | 1991-01-01 → last complete year (solar: two sources, see below) | REST API, no key |
-| USDA NASS Cropland Data Layer (CDL) | Raster | 30 m, annual (2025 national release: 10 m) | 2008 → 2025 | CropScape / CroplandCROS / NASS download, no key |
+| USDA NASS Cropland Data Layer (CDL) | Raster | 30 m series, annual: native 30 m for 2008–2023; official NASS resampled 30 m for 2024–2025 (native 10 m) | 2008 → 2025 | NASS national download / CroplandCROS / CropScape, no key |
 | USDA NRCS SSURGO | Soil survey polygons | Detailed soil-survey map units with component-level attributes (not direct field measurements) | Survey area `IA169` | Soil Data Access (SQL over REST), no key |
 | 2022 Census of Agriculture, county profile | County-level | County, every 5 years | 2022 (2017 for change) | PDF / QuickStats |
 | Davis et al. 2012 (Marsden Farm rotation study) | Field trial (literature) | Research plots, Boone County IA | 2003–2011 | Open-access paper |
@@ -66,10 +66,18 @@ Anything not yet verified is marked **(to confirm)**.
 - Crop-specific land cover, one map per year, produced by NASS from satellite imagery.
 - **CDL is a remotely sensed classification.** Crop labels, and any year-to-year crop transitions derived from them, are estimates with classification error. They are not farmer-reported or verified field rotations.
 - Iowa coverage starts in 2000. The MVP uses 2008 onward, when coverage became national, to keep methods consistent.
-- **2025 status (checked 2026-11-14):**
+- **Resolution change (NASS release page, checked 2026-11-14):**
+
+  | Years | Native resolution | Product used by the MVP |
+  |---|---|---|
+  | 2008–2023 | 30 m | Native 30 m CDL |
+  | 2024 | **10 m** | Official NASS **resampled 30 m** national CDL (1.6 GB) |
+  | 2025 | **10 m** | Official NASS **resampled 30 m** national CDL (1.9 GB) |
+
+  NASS also publishes the native 10 m national files for 2024 (9.0 GB) and 2025 (9.8 GB). The MVP does not use them, so the whole 2008–2025 series stays at a consistent 30 m and TerraShift does no resampling of its own.
+- **2025 status:**
   - The NASS national metadata page lists 2025 layers (cultivated, crop frequency, confidence).
-  - The NASS release page offers a **2025 national CDL at 10 m** (9.8 GB). Earlier years used in the MVP are 30 m, so resolutions must be harmonised before multi-year comparison (method pending).
-  - Iowa 2025 is downloadable: the CropScape CDL service returns `CDL_2025_19.tif` (Iowa) and `CDL_2025_19169.tif` (Story County), and both files respond HTTP 200 as `image/tiff`. The pixel size of these served files has **not** been checked yet; confirm on ingest.
+  - Iowa 2025 is downloadable from CropScape: the CDL service returns `CDL_2025_19.tif` (Iowa) and `CDL_2025_19169.tif` (Story County), and both files respond HTTP 200 as `image/tiff`. Their pixel size has **not** been verified, so they must not be assumed to be 30 m. If they are not 30 m, clip the Story County extent from the official resampled 30 m national product instead.
 - Metadata: https://www.nass.usda.gov/Research_and_Science/Cropland/metadata/meta.php
 - Releases: https://www.nass.usda.gov/research-and-science/cropland/release
 - Download: https://croplandcros.scinet.usda.gov/

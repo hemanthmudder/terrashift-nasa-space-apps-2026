@@ -38,7 +38,7 @@ The `york` and `finney` folders under `data/processed/` are retained as unselect
 |---|---|---|
 | County-level | Census of Agriculture, NASS | One value for the whole county. Never present as field-level. |
 | Point-based | NASA POWER | Values are the source grid cell's value at the requested coordinate (the Census internal point), not a county-wide spatial average. Treating them as representative of the county is an **assumption**. Solar radiation switches source in 2001 (SRB → CERES SYN1deg). |
-| Satellite grid | CDL (30 m; 10 m for 2025), MODIS (250 m), GPM IMERG V07B (0.1°), SMAP (9 km) | Clip to county boundary (and to cropland where relevant), then aggregate. State the resolution next to every derived number. CDL crop labels and transitions are **remotely sensed estimates**, not farmer-reported or verified field rotations. |
+| Satellite grid | CDL (30 m series: native 30 m for 2008–2023, official NASS resampled 30 m for 2024–2025, whose native resolution is 10 m), MODIS (250 m), GPM IMERG V07B (0.1°), SMAP (9 km) | Clip to county boundary (and to cropland where relevant), then aggregate. State the resolution next to every derived number. CDL crop labels and transitions are **remotely sensed estimates**, not farmer-reported or verified field rotations. |
 | Literature | Marsden Farm | Plot results from one adjacent site. Always cite; never relabel as Story County data. The 3- and 4-yr systems combined rotation with periodic composted cattle manure, reduced synthetic N and herbicide, and more labor; never present their results as guaranteed local outcomes. |
 
 ### What the MVP will and will not claim
