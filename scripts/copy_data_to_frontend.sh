@@ -62,6 +62,13 @@ for file in "${EXPECTED_FILES[@]}"; do
     if [[ "$header" != "$EXPECTED_HEADER" ]]; then
       echo "  REJECTED  $file (header does not match the data contract; not copied)"
       rejected=$((rejected + 1))
+
+      # Remove any previously published copy to prevent stale data.
+      if [[ -f "$dest" ]]; then
+        rm -f "$dest"
+        echo "            removed stale published copy"
+      fi
+
       continue
     fi
   fi
