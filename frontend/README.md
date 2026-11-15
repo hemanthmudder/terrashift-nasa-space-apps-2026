@@ -1,56 +1,107 @@
-# TerraShift frontend
+# TerraShift Frontend
 
-Next.js (App Router) + React + TypeScript + Tailwind frontend for the TerraShift
-pilot region **Story County, Iowa** (`ia-story-19169`). It reads datasets
-produced by the Python pipeline in `src/pipeline/`; it has no backend of its
-own and never substitutes sample data.
+Next.js App Router, React, TypeScript and Tailwind frontend for the TerraShift pilot region: Story County, Iowa (`ia-story-19169`).
 
-## Run
+The frontend reads generated datasets from `public/data/ia-story-19169/`. It has no separate application backend and does not call NASA APIs directly from the browser.
+
+## Run locally
+
+First, generate and publish the datasets from the repository root:
 
 ```bash
-# from the repository root: generate and publish data
-python3 -m src.pipeline.fetch_nasa_power
-python3 -m src.pipeline.clean_nasa_power data/raw/nasa_power/ia-story-19169_daily_19910101_20251231.json
-bash scripts/copy_data_to_frontend.sh
+python3 -m pip install -r requirements.txt
 
-# then the frontend
-cd frontend
-npm install
-npm run dev        # http://localhost:3000
+python3 -m src.pipeline.fetch_nasa_power
+
+python3 -m src.pipeline.clean_nasa_power data/raw/nasa_power/ia-story-19169_daily_19910101_20251231.json
+
+python3 -m src.pipeline.build_environment_summary
+
+python3 -m src.engine.rotation_engine
+
+bash scripts/copy_data_to_frontend.sh
 ```
 
-Other scripts: `npm test`, `npm run typecheck`, `npm run build`, `npm start`.
+Then install and start the frontend:
 
-## Data flow
+```bash
+cd frontend
 
-| Published file (`public/data/ia-story-19169/`) | Produced by | Used by |
+npm install
+
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+For a fresh clone, run the data-generation steps before starting the frontend. Generated datasets are intentionally Git-ignored and are not included automatically.
+
+## Published data files
+
+The publishing script copies available processed datasets from:
+
+```text
+data/processed/ia-story-19169/
+```
+
+to:
+
+```text
+frontend/public/data/ia-story-19169/
+```
+
+| Published file | Producer | Used by |
 |---|---|---|
-| `climate_daily.csv` | `fetch_nasa_power` → `clean_nasa_power` → `copy_data_to_frontend.sh` | Climate, Calendar, Reports |
-| `environment_summary.json` | Nothing yet (contract: `docs/METHODOLOGY.md` §4.3) | Pilot Region, Reports |
-| `rotation_comparison.json` | Nothing yet — needs the rotation engine (§4.4) | Crop Rotations, Calendar, Reports |
+| `climate_daily.csv` | `fetch_nasa_power` → `clean_nasa_power` | Climate Insights, Crop Calendar and Reports |
+| `environment_summary.json` | `build_environment_summary` | Pilot Region and Reports |
+| `rotation_comparison.json` | `src.engine.rotation_engine` | Crop Rotations, Crop Calendar and Reports |
 
-Published datasets are generated files and are git-ignored (`frontend/.gitignore`).
+`copy_data_to_frontend.sh` validates the climate CSV header before publishing it. Missing files are reported. Invalid or missing source files are not replaced with fabricated sample data.
 
-**Restart after publishing.** A production server (`npm start`) indexes `public/`
-when it starts: files added later return 404 and files removed later return 400
-until it restarts. The development server (`npm run dev`) picks changes up directly.
+## Application sections
 
-The data-access layer lives in `src/lib/data/`:
+- **Home:** Overview of the TerraShift pilot.
+- **Pilot Region:** Region metadata and environmental summary.
+- **Climate Insights:** Daily climate indicators, monthly climate patterns and growing-season summaries.
+- **Crop Rotations:** Rotation cycles and the status of comparison evidence.
+- **Crop Calendar:** Seasonal calendar and rotation timeline.
+- **Reports:** Printable pilot report, which can be saved as PDF using the browser's print dialog.
 
-- `climate.ts` — strict parser for the §4.2 CSV contract. Empty cells become
-  `null` (shown as "—"), never zero; rows keep their `qc_flag`.
-- `summary.ts` — averages and growing-season indicators (§3). Missing values
-  are skipped and partial seasons/months are left blank, not zero-filled.
-- `loaders.ts` — loads each file and returns `available`, `missing`,
-  `placeholder`, `invalid` or `error`. Contract examples with zeros or empty
-  strings are reported as placeholders and never displayed.
+## Data handling
 
-`src/lib/region.ts` mirrors `config/pilot_region.json`; a test fails if they drift.
+The data-access layer is in `src/lib/data/`:
 
-## Honesty rules
+- `climate.ts` — parses the documented daily CSV contract.
+- `summary.ts` — computes climate and growing-season indicators.
+- `loaders.ts` — loads datasets and reports availability, missing files, invalid files or errors.
+- `rotations.ts` — handles rotation comparison data.
 
-- Soil wetness values are labelled as NASA POWER (MERRA-2) model estimates, not soil measurements.
-- Crop rotation content appears only when a valid `rotation_comparison.json` for this region exists,
-  with the disclaimer "Decision support only; not a yield forecast."
-- Scoring weights and custom sequence evaluation are shown as waiting for the rotation engine.
-- The earlier Karnataka engine, crops and seasons are not included.
+Missing measurements are not silently converted to zero. Partial climate periods are not filled with invented values.
+
+The region configuration is mirrored in `src/lib/region.ts`; tests check that these definitions remain aligned.
+
+## Tests and production build
+
+```bash
+npm test
+npm run typecheck
+npm run build
+```
+
+Start the production server after building:
+
+```bash
+npm start
+```
+
+**Important:** Restart the production server after publishing new files into `public/`. The development server can pick up local data changes directly.
+
+## Limitations
+
+- Climate values represent a NASA POWER grid cell at the county internal point, not individual farms.
+- Soil wetness is a model estimate, not a direct measurement.
+- The current pilot does not establish completion of field-level soil or land-cover integration.
+- Rotation metrics without approved evidence are shown as pending.
+- Rotation comparisons are decision-support context, not yield forecasts or validated farm-specific recommendations.
+
+See the repository root `README.md` and `docs/METHODOLOGY.md` for the complete pipeline and methodology.
