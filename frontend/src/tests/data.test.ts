@@ -210,14 +210,44 @@ describe("placeholder contract examples are never shown as data", () => {
       schema_version: "1.0",
       region_id: PILOT_REGION.id,
       disclaimer: "Decision support only; not a yield forecast.",
-      rotations: [{ id: "cs2", name: "Corn-Soybean (2-yr)", sequence: ["corn", "soybean"], baseline: true }],
+      rotations: [
+        { id: "cs2", name: "Corn-Soybean (2-yr)", sequence: ["corn", "soybean"], baseline: true },
+        { id: "cso3", name: "Corn-Soybean-Small grain + Red clover (3-yr)", sequence: ["corn", "soybean", "oat_redclover"], baseline: false },
+      ],
       metrics: [
-        { rotation_id: "cs2", metric: "corn_yield_vs_baseline_pct", value: 0, provenance: "computed", citation: "test fixture", applicability: "test", confidence: "low", status: "supported" },
-        { rotation_id: "cs2", metric: "water_demand", value: null, provenance: "pending", citation: null, applicability: null, confidence: null, status: "pending" },
+        { rotation_id: "cso3", metric: "corn_yield_vs_baseline_pct", value: 0, provenance: "computed", citation: "test fixture", applicability: "test", confidence: "low", status: "supported" },
+        { rotation_id: "cso3", metric: "water_demand", value: null, provenance: "pending", citation: null, applicability: null, confidence: null, status: "pending" },
       ],
     };
     expect(validateRotationComparison(good).status).toBe("available");
     expect(validateRotationComparison({ ...good, metrics: [{ ...good.metrics[1], value: 3 }] }).status).toBe("invalid");
+  });
+
+  it("rejects any metric on the baseline rotation (cs2)", () => {
+    const base = {
+      schema_version: "1.0",
+      region_id: PILOT_REGION.id,
+      disclaimer: "Decision support only; not a yield forecast.",
+      rotations: [
+        { id: "cs2", name: "Corn-Soybean (2-yr)", sequence: ["corn", "soybean"], baseline: true },
+        { id: "cso3", name: "Corn-Soybean-Small grain + Red clover (3-yr)", sequence: ["corn", "soybean", "oat_redclover"], baseline: false },
+      ],
+    };
+    const supported = { rotation_id: "cs2", metric: "corn_yield_vs_baseline_pct", value: 0, provenance: "computed", citation: "test fixture", applicability: "test", confidence: "low", status: "supported" };
+    const pendingOnBaseline = { rotation_id: "cs2", metric: "water_demand", value: null, provenance: "pending", citation: null, applicability: null, confidence: null, status: "pending" };
+    for (const metric of [supported, pendingOnBaseline]) {
+      const result = validateRotationComparison({ ...base, metrics: [metric] });
+      expect(result.status).toBe("invalid");
+      if (result.status === "invalid") expect(result.reason).toMatch(/baseline rotation "cs2"/);
+    }
+  });
+
+  it("requires exactly one baseline rotation", () => {
+    const rot = (id: string, baseline: boolean) => ({ id, name: id, sequence: ["corn", "soybean"], baseline });
+    const file = (rotations: unknown[]) => ({ schema_version: "1.0", region_id: PILOT_REGION.id, disclaimer: "Decision support only; not a yield forecast.", rotations, metrics: [] });
+    expect(validateRotationComparison(file([rot("cs2", true), rot("cso3", false)])).status).toBe("available");
+    expect(validateRotationComparison(file([rot("cs2", false), rot("cso3", false)])).status).toBe("invalid");
+    expect(validateRotationComparison(file([rot("cs2", true), rot("cso3", true)])).status).toBe("invalid");
   });
 });
 
