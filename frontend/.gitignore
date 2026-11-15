@@ -1,0 +1,11 @@
+# Next.js frontend (kept separate from the repository root .gitignore)
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+
+# Datasets published by scripts/copy_data_to_frontend.sh (generated, not committed)
+public/data/*/
