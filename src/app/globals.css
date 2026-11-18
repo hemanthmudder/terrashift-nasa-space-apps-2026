@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-earth: #faf8f5;
+  --surface-white: #ffffff;
+  --terra-primary: #225732;
+  --terra-accent: #2e6f40;
+  --orbital-blue: #1d70b8;
+  --ink-dark: #142218;
+}
+
+body {
+  background-color: var(--bg-earth);
+  color: var(--ink-dark);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+}

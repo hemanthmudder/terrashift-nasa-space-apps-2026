@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TerraShift | Smarter Crop Rotations. Healthier Soil. Climate-Ready Farms.</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    :root {
+      --bg-earth: #faf8f5;
+      --surface: #ffffff;
+      --terra-900: #14331d;
+      --terra-700: #1b4528;
+      --terra-600: #225732;
+      --terra-500: #2e6f40;
+      --terra-100: #e1efe6;
+      --orbital-600: #15548a;
+      --orbital-500: #1d70b8;
+      --orbital-50: #f0f7ff;
+      --amber-100: #fef3c7;
+      --amber-900: #78350f;
+      --border: #e5e0d8;
+      --text: #1c2820;
+      --muted: #57635b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-earth);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+    }
+    header {
+      background: var(--terra-900);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .nav-bar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--terra-500); display: flex; align-items: center;
+      justify-content: center; font-weight: 800; font-size: 16px;
+    }
+    .nav-tabs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .nav-btn {
+      background: transparent; color: #d1fae5; border: none;
+      padding: 7px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 13px; font-weight: 600; transition: 0.15s;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.12); }
+    .nav-btn.active { background: #fff; color: var(--terra-900); }
+    .lang-btn {
+      background: var(--orbital-500); color: #fff; border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700;
+    }
+    .banner-fallback {
+      background: var(--amber-100); color: var(--amber-900);
+      padding: 8px 16px; text-align: center; font-size: 13px; font-weight: 600;
+      border-bottom: 1px solid #fcd34d;
+    }
+    main { max-width: 1280px; margin: 0 auto; padding: 24px 16px 64px; }
+    .page-sec { display: none; }
+    .page-sec.active { display: block; }
+    .hero {
+      background: linear-gradient(135deg, #14331d 0%, #1b4528 55%, #0f3c63 100%);
+      color: #fff; padding: 44px 36px; border-radius: 18px; margin-bottom: 24px;
+    }
+    .hero h1 { font-size: clamp(26px, 4vw, 42px); margin: 12px 0; line-height: 1.18; }
+    .hero p { font-size: 16px; color: #d1fae5; max-width: 720px; margin-bottom: 20px; }
+    .btn-primary {
+      background: #10b981; color: #052e16; border: none; padding: 12px 22px;
+      border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.16); color: #fff; border: 1px solid rgba(255,255,255,0.3);
+      padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer;
+      margin-left: 8px;
+    }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .card h2 { font-size: 18px; color: var(--terra-900); margin-bottom: 8px; }
+    .card h3 { font-size: 15px; color: var(--terra-700); margin-bottom: 6px; }
+    .form-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px; margin-bottom: 18px;
+    }
+    label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; }
+    input, select {
+      width: 100%; padding: 9px 11px; border: 1px solid #cbd5e1;
+      border-radius: 8px; font-size: 14px; background: #fff;
+    }
+    #farm-map { height: 280px; width: 100%; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+    th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
+    th { background: #f3efe6; font-weight: 700; }
+    .badge {
+      display: inline-block; padding: 3px 10px; border-radius: 999px;
+      font-size: 11px; font-weight: 700;
+    }
+    .badge-green { background: #d1fae5; color: #065f46; }
+    .badge-amber { background: #fef3c7; color: #92400e; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .step-box {
+      border-left: 4px solid var(--terra-500); background: #f8faf9;
+      padding: 10px 12px; border-radius: 0 8px 8px 0; margin-bottom: 8px; font-size: 13px;
+    }
+    .bar-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin: 5px 0; }
+    .bar-track { flex: 1; height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--terra-500); }
+    .bar-fill.blue { background: var(--orbital-500); }
+    @media print {
+      header, .no-print { display: none !important; }
+      .page-sec { display: none !important; }
+      #page-report { display: block !important; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-bar">
+      <div class="brand">
+        <div class="brand-logo">TS</div>
+        <div>
+          <div style="font-weight:800;font-size:17px;">TerraShift <span style="font-size:11px;background:#065f46;padding:2px 8px;border-radius:99px;">NASA Space Apps 2026</span></div>
+          <div id="brand-sub" style="font-size:12px;color:#a7f3d0;">Smarter Crop Rotations. Healthier Soil. Climate-Ready Farms.</div>
+        </div>
+      </div>
+      <div class="nav-tabs">
+        <button class="nav-btn active" onclick="switchPage('landing')" id="nav-landing">1. Overview</button>
+        <button class="nav-btn" onclick="switchPage('farm')" id="nav-farm">2. Farm & Soil</button>
+        <button class="nav-btn" onclick="switchPage('nasa')" id="nav-nasa">3. NASA Intelligence</button>
+        <button class="nav-btn" onclick="switchPage('recommendations')" id="nav-recommendations">4. Crop Rotations</button>
+        <button class="nav-btn" onclick="switchPage('planner')" id="nav-planner">5. Calendar Planner</button>
+        <button class="nav-btn" onclick="switchPage('report')" id="nav-report">6. Report & Export</button>
+        <button class="lang-btn" onclick="toggleLang()" id="lang-toggle">ಕನ್ನಡ / KN</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="fallback-banner" class="banner-fallback" style="display:none;"></div>
+
+  <main>
+    <!-- PAGE 1: LANDING -->
+    <section id="page-landing" class="page-sec active">
+      <div class="hero">
+        <span class="badge badge-blue">Field Shift: Adapting Farms with NASA Data</span>
+        <h1 id="hero-title">Turn NASA Earth Observations into Smarter Farming Decisions.</h1>
+        <p id="hero-sub">Explore climate-aware crop rotations using NASA environmental data, local soil information and agricultural knowledge.</p>
+        <div>
+          <button class="btn-primary" onclick="switchPage('farm')" id="cta-start">Start Farm Analysis →</button>
+          <button class="btn-secondary" onclick="switchPage('recommendations')">View Davanagere Pilot Rotations</button>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h2>1. Genuine NASA Earth Observations</h2>
+          <p style="font-size:13px;color:var(--muted);">
+            Retrieves location-specific daily agroclimatology parameters from <strong>NASA POWER (MERRA-2 / CERES)</strong>:
+            mean/max/min temperature (<code>T2M</code>, <code>T2M_MAX</code>, <code>T2M_MIN</code>), corrected precipitation (<code>PRECTOTCORR</code>),
+            relative humidity (<code>RH2M</code>), solar radiation (<code>ALLSKY_SFC_SW_DWN</code>), and surface vs. root-zone soil wetness (<code>GWETTOP</code>, <code>GWETROOT</code>),
+            alongside GPM IMERG, SMAP, and MODIS spatial resolution disclosures.
+          </p>
+        </div>
+        <div class="card">
+          <h2>2. Verified Karnataka Crop Database</h2>
+          <p style="font-size:13px;color:var(--muted);">
+            Evaluates 12 crops across Karnataka's Agro-Climatic Zones (Ragi, Maize, Paddy, Sorghum, Pigeon Pea, Chickpea, Green Gram, Black Gram, Groundnut, Sunflower, Sesame, and Sunnhemp/Dhaincha Green Manure) with citations from ICAR, UAS Bangalore, ICRISAT, and TNAU.
+          </p>
+        </div>
+        <div class="card">
+          <h2>3. Explainable Two-Stage Rotation Engine</h2>
+          <p style="font-size:13px;color:var(--muted);">
+            Stage A screens crop suitability across climate, rainfall, water, and soil pH without disqualifying farms with missing soil tests. Stage B builds <strong>Balanced</strong>, <strong>Water-Conscious</strong>, and <strong>Soil-Improvement</strong> sequences with explicit monoculture and family-repetition penalties.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: FARM REGISTRATION -->
+    <section id="page-farm" class="page-sec">
+      <div class="card">
+        <h2>Step 2 & 3 — Farm Location, Interactive Map & Soil Registration</h2>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">
+          Click anywhere on the Karnataka map, choose a pilot district preset, or enter coordinates manually. Fields marked with * are required; laboratory soil values are optional.
+        </p>
+
+        <div id="farm-map"></div>
+
+        <div class="form-grid">
+          <div>
+            <label>Pilot Region Preset (Karnataka)</label>
+            <select id="region-select" onchange="onRegionSelect(this.value)"></select>
+          </div>
+          <div>
+            <label>Latitude (°N) *</label>
+            <input type="number" id="f-lat" step="0.0001" value="14.4644" />
+          </div>
+          <div>
+            <label>Longitude (°E) *</label>
+            <input type="number" id="f-lon" step="0.0001" value="75.9218" />
+          </div>
+          <div>
+            <label>Farm Area *</label>
+            <div style="display:flex;gap:6px;">
+              <input type="number" id="f-area" step="0.5" value="4.5" />
+              <select id="f-unit" style="width:110px;">
+                <option value="acres">Acres</option>
+                <option value="hectares">Hectares</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div>
+            <label>Soil Type *</label>
+            <select id="f-soil">
+              <option value="red_sandy_loam">Red Sandy Loam (Alfisol)</option>
+              <option value="red_loam">Red Loam</option>
+              <option value="black_cotton_clay">Black Cotton Clay (Vertisol)</option>
+              <option value="lateritic">Lateritic Soil</option>
+              <option value="alluvial_loam">Alluvial / Command Loam</option>
+            </select>
+          </div>
+          <div>
+            <label>Previous Season Crop *</label>
+            <select id="f-prev"></select>
+          </div>
+          <div>
+            <label>Irrigation Availability *</label>
+            <select id="f-irr">
+              <option value="protective_lifesaving">Protective / Lifesaving Irrigation</option>
+              <option value="rainfed">Rainfed Only (Monsoon Dependent)</option>
+              <option value="borewell_drip_sprinkler">Borewell Drip / Sprinkler</option>
+              <option value="canal_command_assured">Assured Canal Command (Bhadra / Cauvery)</option>
+            </select>
+          </div>
+          <div>
+            <label>Farmer Primary Objective *</label>
+            <select id="f-prio">
+              <option value="balanced_adaptation">Balanced Climate Adaptation</option>
+              <option value="water_conservation">Water Conservation</option>
+              <option value="soil_health_restoration">Soil Health & Organic Carbon Restoration</option>
+              <option value="drought_risk_reduction">Drought & Dry-Spell Risk Reduction</option>
+              <option value="pulse_oilseed_diversification">Pulse & Oilseed Diversification</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+            <h3>Optional Soil Health Card Values (Leave blank or check 'Unknown' if untested)</h3>
+            <label style="text-transform:none;color:#92400e;cursor:pointer;">
+              <input type="checkbox" id="f-soil-unknown" onchange="toggleSoilUnknown(this.checked)" style="width:auto;margin-right:6px;" />
+              Mark all laboratory soil test values as Unknown
+            </label>
+          </div>
+          <div class="form-grid" id="soil-inputs-row">
+            <div><label>Soil pH (3.5–10)</label><input type="number" id="f-ph" step="0.1" value="6.4" /></div>
+            <div><label>Organic Carbon (%)</label><input type="number" id="f-oc" step="0.05" value="0.42" /></div>
+            <div><label>Available N (kg/ha)</label><input type="number" id="f-n" value="215" /></div>
+            <div><label>Available P (kg/ha)</label><input type="number" id="f-p" value="24" /></div>
+            <div><label>Available K (kg/ha)</label><input type="number" id="f-k" value="185" /></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;display:flex;justify-content:flex-end;">
+          <button class="btn-primary" onclick="submitFarmAndAnalyze()">Save Farm Profile & Fetch NASA Intelligence →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: NASA INTELLIGENCE -->
+    <section id="page-nasa" class="page-sec">
+      <div class="card" style="margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+          <div>
+            <h2 id="nasa-heading">Step 4 & 5 — NASA Environmental Intelligence</h2>
+            <p id="nasa-meta" style="font-size:12px;color:var(--muted);"></p>
+          </div>
+          <button class="btn-primary" onclick="switchPage('recommendations')">Generate Crop Rotations →</button>
+        </div>
+
+        <div class="grid-4" id="nasa-kpi-strip" style="margin-bottom:18px;"></div>
+
+        <h3>Monthly Rainfall Distribution (mm) & Mean Temperature (°C)</h3>
+        <div id="nasa-monthly-bars" style="margin:12px 0 20px;"></div>
+
+        <h3>Seasonal Agroclimatology Comparison (Kharif vs. Rabi vs. Summer)</h3>
+        <table id="nasa-seasonal-table">
+          <thead>
+            <tr>
+              <th>Season</th>
+              <th>Months</th>
+              <th>Avg Seasonal Rain (mm)</th>
+              <th>Inter-Annual Rain CV (%)</th>
+              <th>Mean / Max Temp (°C)</th>
+              <th>Longest Dry Spell (&lt;2.5 mm/d)</th>
+              <th>Root-Zone Soil Wetness (0–1)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div style="margin-top:16px;padding:12px;background:var(--orbital-50);border-radius:10px;font-size:12px;">
+          <strong>Spatial Resolution & Satellite Limitations Disclosure:</strong>
+          <span id="nasa-disclaimer"></span>
+          <div style="margin-top:6px;">
+            Sources:
+            <a href="https://power.larc.nasa.gov/docs/services/api/temporal/daily/" target="_blank" rel="noopener">NASA POWER Daily API</a> |
+            <a href="https://gpm.nasa.gov/data/imerg" target="_blank" rel="noopener">NASA GPM IMERG (0.1° ~10 km Final Run)</a> |
+            <a href="https://smap.jpl.nasa.gov/data/" target="_blank" rel="noopener">NASA SMAP Soil Moisture (9 km EASE-Grid)</a> |
+            <a href="https://lpdaac.usgs.gov/documents/621/MOD13_User_Guide_V61.pdf" target="_blank" rel="noopener">NASA MODIS MOD13Q1 (250m 16-Day NDVI)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4: CROP ROTATION RECOMMENDATIONS -->
+    <section id="page-recommendations" class="page-sec">
+      <div class="card" style="margin-bottom:18px;">
+        <h2>Step 6, 7 & 8 — Three Explainable Crop-Rotation Strategies</h2>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">
+          Compare Strategy A (Balanced), Strategy B (Water-Conscious), and Strategy C (Soil-Improvement). Every score includes sequence-level penalty checks and a separate evidence confidence indicator.
+        </p>
+        <div class="grid-3" id="rec-cards-container"></div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: INTERACTIVE PLANNER -->
+    <section id="page-planner" class="page-sec">
+      <div class="card">
+        <h2>Step 9 — Interactive Seasonal Crop Calendar & Sequence Simulator</h2>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">
+          Customize the 3-season crop sequence below to test how changing any crop impacts total suitability, repeated-family penalties, and water compatibility.
+        </p>
+        <div class="grid-3" style="margin-bottom:16px;">
+          <div>
+            <label>Season 1: Kharif (June – September)</label>
+            <select id="sim-s1" onchange="recalculateCustomSequence()"></select>
+          </div>
+          <div>
+            <label>Season 2: Rabi (October – January)</label>
+            <select id="sim-s2" onchange="recalculateCustomSequence()"></select>
+          </div>
+          <div>
+            <label>Season 3: Summer / Pre-Kharif (Feb – May)</label>
+            <select id="sim-s3" onchange="recalculateCustomSequence()"></select>
+          </div>
+        </div>
+        <div id="sim-result-box"></div>
+      </div>
+    </section>
+
+    <!-- PAGE 6: REPORT & EXPORT -->
+    <section id="page-report" class="page-sec">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:16px;">
+          <div>
+            <h2>TerraShift — Printable Farm Advisory & NASA Crop Rotation Report</h2>
+            <p style="font-size:12px;color:var(--muted);" id="report-timestamp"></p>
+          </div>
+          <button class="btn-primary no-print" onclick="window.print()">Print / Save as PDF Report</button>
+        </div>
+        <div id="report-body"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let STATE = {
+      lang: "en",
+      crops: [],
+      regions: [],
+      farmProfile: null,
+      nasaData: null,
+      recommendations: [],
+      selectedStrategyIdx: 0,
+      customEval: null,
+      map: null,
+      marker: null
+    };
+
+    function switchPage(pageId) {
+      document.querySelectorAll(".page-sec").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".nav-btn").forEach(el => el.classList.remove("active"));
+      document.getElementById("page-" + pageId).classList.add("active");
+      document.getElementById("nav-" + pageId).classList.add("active");
+      if (pageId === "farm" && STATE.map) {
+        setTimeout(() => STATE.map.invalidateSize(), 150);
+      }
+    }
+
+    function toggleLang() {
+      STATE.lang = STATE.lang === "en" ? "kn" : "en";
+      document.getElementById("lang-toggle").textContent = STATE.lang === "en" ? "ಕನ್ನಡ / KN" : "English / EN";
+      const navLabels = STATE.lang === "en"
+        ? ["1. Overview", "2. Farm & Soil", "3. NASA Intelligence", "4. Crop Rotations", "5. Calendar Planner", "6. Report & Export"]
+        : ["1. ಮುಖಪುಟ", "2. ಜಮೀನು ಮತ್ತು ಮಣ್ಣು", "3. NASA ಹವಾಮಾನ", "4. ಬೆಳೆ ಶಿಫಾರಸು", "5. ಬೆಳೆ ಕ್ಯಾಲೆಂಡರ್", "6. ವರದಿ / PDF"];
+      ["landing", "farm", "nasa", "recommendations", "planner", "report"].forEach((id, idx) => {
+        const el = document.getElementById("nav-" + id);
+        if (el) el.textContent = navLabels[idx];
+      });
+      document.getElementById("hero-title").textContent = STATE.lang === "en"
+        ? "Turn NASA Earth Observations into Smarter Farming Decisions."
+        : "NASA ಭೂ ವೀಕ್ಷಣಾ ದತ್ತಾಂಶದಿಂದ ಸ್ಮಾರ್ಟ್ ಬೆಳೆ ಪರಿವರ್ತನೆಯ ನಿರ್ಧಾರಗಳನ್ನು ಕೈಗೊಳ್ಳಿ.";
+      document.getElementById("hero-sub").textContent = STATE.lang === "en"
+        ? "Explore climate-aware crop rotations using NASA environmental data, local soil information and agricultural knowledge."
+        : "NASA ಹವಾಮಾನ ದತ್ತಾಂಶ, ಸ್ಥಳೀಯ ಮಣ್ಣಿನ ಪರೀಕ್ಷೆ ಮತ್ತು ಕೃಷಿ ವಿಜ್ಞಾನದ ಆಧಾರದ ಮೇಲೆ ಸುಸ್ಥಿರ ಬೆಳೆ ಪರಿವರ್ತನೆಗಳನ್ನು ರೂಪಿಸಿ.";
+      renderRecommendations();
+      renderReport();
+    }
+
+    function toggleSoilUnknown(checked) {
+      const row = document.getElementById("soil-inputs-row");
+      row.style.opacity = checked ? "0.4" : "1";
+      ["f-ph", "f-oc", "f-n", "f-p", "f-k"].forEach(id => {
+        document.getElementById(id).disabled = checked;
+      });
+    }
+
+    function initMap() {
+      if (STATE.map || typeof L === "undefined") return;
+      STATE.map = L.map("farm-map").setView([14.4644, 75.9218], 7);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(STATE.map);
+      STATE.marker = L.marker([14.4644, 75.9218]).addTo(STATE.map);
+      STATE.map.on("click", function(e) {
+        const lat = e.latlng.lat.toFixed(4);
+        const lon = e.latlng.lng.toFixed(4);
+        document.getElementById("f-lat").value = lat;
+        document.getElementById("f-lon").value = lon;
+        STATE.marker.setLatLng(e.latlng);
+      });
+    }
+
+    function onRegionSelect(regionId) {
+      const reg = STATE.regions.find(r => r.id === regionId);
+      if (!reg) return;
+      document.getElementById("f-lat").value = reg.latitude;
+      document.getElementById("f-lon").value = reg.longitude;
+      document.getElementById("f-soil").value = reg.defaultSoilType;
+      document.getElementById("f-irr").value = reg.typicalIrrigation;
+      document.getElementById("f-prev").value = reg.commonPreviousCrop;
+      document.getElementById("f-ph").value = reg.typicalpH;
+      document.getElementById("f-oc").value = reg.typicalOC;
+      if (STATE.map && STATE.marker) {
+        STATE.map.setView([reg.latitude, reg.longitude], 9);
+        STATE.marker.setLatLng([reg.latitude, reg.longitude]);
+      }
+      submitFarmAndAnalyze(false);
+    }
+
+    function gatherFarmForm() {
+      const unknown = document.getElementById("f-soil-unknown").checked;
+      const regId = document.getElementById("region-select").value || "davanagere";
+      const reg = STATE.regions.find(r => r.id === regId) || { district: "Davanagere", typicalWaterSource: "borewell_groundwater" };
+      return {
+        district: reg.district,
+        state: "Karnataka",
+        latitude: parseFloat(document.getElementById("f-lat").value) || 14.4644,
+        longitude: parseFloat(document.getElementById("f-lon").value) || 75.9218,
+        area: parseFloat(document.getElementById("f-area").value) || 4.5,
+        areaUnit: document.getElementById("f-unit").value,
+        soilType: document.getElementById("f-soil").value,
+        previousCrop: document.getElementById("f-prev").value,
+        irrigationType: document.getElementById("f-irr").value,
+        waterSource: reg.typicalWaterSource || "borewell_groundwater",
+        farmerPriority: document.getElementById("f-prio").value,
+        soilPH: unknown ? null : parseFloat(document.getElementById("f-ph").value),
+        organicCarbonPercent: unknown ? null : parseFloat(document.getElementById("f-oc").value),
+        nitrogenKgHa: unknown ? null : parseFloat(document.getElementById("f-n").value),
+        phosphorusKgHa: unknown ? null : parseFloat(document.getElementById("f-p").value),
+        potassiumKgHa: unknown ? null : parseFloat(document.getElementById("f-k").value)
+      };
+    }
+
+    async function submitFarmAndAnalyze(navigateToNasa = true) {
+      const farmPayload = gatherFarmForm();
+      const s1 = document.getElementById("sim-s1").value || "groundnut";
+      const s2 = document.getElementById("sim-s2").value || "ragi";
+      const s3 = document.getElementById("sim-s3").value || "greengram";
+
+      const res = await fetch("/api/recommendations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          farmProfile: farmPayload,
+          customSequence: [s1, s2, s3]
+        })
+      });
+      const json = await res.json();
+      if (json.status === "ok") {
+        STATE.farmProfile = json.farmProfile;
+        STATE.nasaData = json.nasaData;
+        STATE.recommendations = json.recommendations;
+        STATE.customEval = json.customSequenceEvaluation;
+        renderNasaDashboard();
+        renderRecommendations();
+        renderCustomPlanner();
+        renderReport();
+        if (navigateToNasa) switchPage("nasa");
+      }
+    }
+
+    async function recalculateCustomSequence() {
+      await submitFarmAndAnalyze(false);
+    }
+
+    function renderNasaDashboard() {
+      const n = STATE.nasaData;
+      if (!n) return;
+      const banner = document.getElementById("fallback-banner");
+      if (!n.isLiveRetrieval && n.fallbackBannerMessage) {
+        banner.style.display = "block";
+        banner.textContent = "⚠️ " + n.fallbackBannerMessage + " (" + STATE.farmProfile.district + ": " + n.latitude + "°N, " + n.longitude + "°E)";
+      } else {
+        banner.style.display = "none";
+      }
+
+      document.getElementById("nasa-meta").textContent =
+        `${n.source} | Resolution: ${n.spatialResolution} | Period: ${n.startDate}–${n.endDate} | Retrieved: ${new Date(n.retrievedAt).toLocaleString()}`;
+      document.getElementById("nasa-disclaimer").textContent = n.qualityInformation.spatialFootprintDisclaimer;
+
+      const ind = n.indicators;
+      document.getElementById("nasa-kpi-strip").innerHTML = `
+        <div class="card" style="background:#f0f9ff;">
+          <div style="font-size:11px;font-weight:700;color:#0369a1;">MEAN ANNUAL RAINFALL</div>
+          <div style="font-size:24px;font-weight:800;color:#0c4a6e;">${ind.meanAnnualRainMm} mm</div>
+          <div style="font-size:12px;color:#0369a1;">Inter-annual CV: ${ind.annualRainCvPercent}%</div>
+        </div>
+        <div class="card" style="background:#fffbeb;">
+          <div style="font-size:11px;font-weight:700;color:#b45309;">MAX KHARIF DRY SPELL</div>
+          <div style="font-size:24px;font-weight:800;color:#78350f;">${ind.avgLongestKharifDrySpellDays} days</div>
+          <div style="font-size:12px;color:#b45309;">Drought Risk: ${ind.droughtRiskClass}</div>
+        </div>
+        <div class="card" style="background:#fff1f2;">
+          <div style="font-size:11px;font-weight:700;color:#be123c;">MEAN TEMPERATURE</div>
+          <div style="font-size:24px;font-weight:800;color:#881337;">${ind.meanAnnualTempC} °C</div>
+          <div style="font-size:12px;color:#be123c;">Heat Stress (&ge;35°C): ${ind.avgHeatStressDaysPerYear} d/yr</div>
+        </div>
+        <div class="card" style="background:#ecfdf5;">
+          <div style="font-size:11px;font-weight:700;color:#047857;">ROOT-ZONE vs SURFACE WETNESS</div>
+          <div style="font-size:24px;font-weight:800;color:#064e3b;">${ind.meanRootZoneSoilWetness} / ${ind.meanSurfaceSoilWetness}</div>
+          <div style="font-size:12px;color:#047857;">MERRA-2GWETROOT / GWETTOP (0–1)</div>
+        </div>
+      `;
+
+      const maxRain = Math.max(...n.monthlyClimatology.map(m => m.avgRainMm), 180);
+      document.getElementById("nasa-monthly-bars").innerHTML = n.monthlyClimatology.map(m => `
+        <div class="bar-row">
+          <div style="width:40px;font-weight:700;">${m.monthName}</div>
+          <div class="bar-track"><div class="bar-fill blue" style="width:${Math.min(100, (m.avgRainMm / maxRain) * 100)}%;"></div></div>
+          <div style="width:185px;text-align:right;"><strong>${m.avgRainMm} mm</strong> (${m.avgTempC} °C, RH ${m.avgRhPercent}%)</div>
+        </div>
+      `).join("");
+
+      const tbody = document.querySelector("#nasa-seasonal-table tbody");
+      tbody.innerHTML = ["kharif", "rabi", "summer"].map(k => {
+        const s = n.seasonalSummaries[k];
+        return `<tr>
+          <td><strong>${s.label}</strong></td>
+          <td>${s.monthsLabel}</td>
+          <td>${s.avgTotalRainMm} mm</td>
+          <td>${s.rainVariabilityCvPercent} %</td>
+          <td>${s.avgMeanTempC} °C / ${s.avgMaxTempC} °C</td>
+          <td>${s.maxConsecutiveDryDays} days</td>
+          <td>${s.avgRootZoneWetness ?? "N/A"}</td>
+        </tr>`;
+      }).join("");
+    }
+
+    function renderRecommendations() {
+      const container = document.getElementById("rec-cards-container");
+      if (!STATE.recommendations.length) return;
+      container.innerHTML = STATE.recommendations.map((rec, idx) => `
+        <div class="card" style="border: 2px solid ${STATE.selectedStrategyIdx === idx ? '#225732' : '#e5e0d8'};">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px;">
+            <div>
+              <h3>${STATE.lang === "en" ? rec.strategyTitle : rec.kannadaTitle}</h3>
+              <p style="font-size:12px;color:var(--muted);">${rec.strategySubtitle}</p>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:26px;font-weight:800;color:var(--terra-600);">${rec.totalScore}</div>
+              <div style="font-size:10px;color:var(--muted);">SCORE / 100</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <span class="badge badge-amber">Confidence: ${rec.confidence.level} (${rec.confidence.scorePercent}%)</span>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            ${rec.sequenceSteps.map(s => `
+              <div class="step-box">
+                <div style="font-weight:700;color:var(--terra-900);">${s.seasonLabel}: ${s.cropName} (${s.kannadaName})</div>
+                <div style="font-size:11px;color:var(--muted);">
+                  Family: <strong>${s.family}</strong> | Duration: ${s.durationDays}d | Water: ${s.waterRequirement} | Sowing: ${s.sowingWindow}
+                </div>
+                <div style="font-size:11px;margin-top:3px;">${s.transitionNote}</div>
+              </div>
+            `).join("")}
+          </div>
+
+          <div style="font-size:12px;margin-bottom:10px;">
+            <strong>Component Scores:</strong> Climate ${rec.climateScore} | Water ${rec.waterScore} | Soil ${rec.soilScore} | Diversity ${rec.diversityScore}
+            (Penalties: -${rec.penalties.totalPenalty} pts)
+          </div>
+
+          <p style="font-size:12px;margin-bottom:8px;"><strong>Why this sequence:</strong> ${rec.whyThisSequence}</p>
+          <div style="font-size:12px;background:#ecfdf5;padding:8px;border-radius:8px;color:#064e3b;margin-bottom:10px;">
+            ${rec.kannadaSummary}
+          </div>
+
+          <div style="font-size:11px;color:var(--muted);margin-bottom:10px;">
+            <strong>Key Risks & Disclosures:</strong>
+            <ul style="padding-left:16px;margin-top:4px;">
+              ${rec.risks.map(r => `<li>${r}</li>`).join("")}
+            </ul>
+          </div>
+
+          <button class="btn-primary" style="width:100%;" onclick="selectStrategyForPlanner(${idx})">
+            Select Strategy & Open Calendar Planner →
+          </button>
+        </div>
+      `).join("");
+    }
+
+    function selectStrategyForPlanner(idx) {
+      STATE.selectedStrategyIdx = idx;
+      const rec = STATE.recommendations[idx];
+      if (rec) {
+        document.getElementById("sim-s1").value = rec.crops[0];
+        document.getElementById("sim-s2").value = rec.crops[1];
+        document.getElementById("sim-s3").value = rec.crops[2];
+      }
+      renderRecommendations();
+      recalculateCustomSequence();
+      renderReport();
+      switchPage("planner");
+    }
+
+    function renderCustomPlanner() {
+      const ev = STATE.customEval;
+      if (!ev) return;
+      document.getElementById("sim-result-box").innerHTML = `
+        <div class="card" style="background:#f8faf9;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <h3>Simulated Sequence Evaluation: ${ev.sequenceSteps.map(s => s.cropName).join(" → ")}</h3>
+            <span class="badge badge-green" style="font-size:14px;">Total Score: ${ev.totalScore} / 100 (Penalties: -${ev.penalties.totalPenalty} pts)</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Season</th>
+                <th>Crop & Scientific Name</th>
+                <th>Botanical Family</th>
+                <th>Sowing Window</th>
+                <th>Duration</th>
+                <th>Harvest / Incorporation</th>
+                <th>Agronomic Transition Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${ev.sequenceSteps.map(s => `
+                <tr>
+                  <td><strong>${s.seasonLabel}</strong></td>
+                  <td><a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.cropName}</a> (<em>${s.scientificName}</em>)</td>
+                  <td>${s.family}</td>
+                  <td>${s.sowingWindow}</td>
+                  <td>${s.durationDays} days</td>
+                  <td>${s.harvestWindow}</td>
+                  <td>${s.transitionNote}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+          ${ev.penalties.notes.length ? `<div style="margin-top:10px;color:#b91c1c;font-size:12px;font-weight:600;">Agronomic Penalties Triggered: ${ev.penalties.notes.join(" | ")}</div>` : ""}
+        </div>
+      `;
+    }
+
+    function renderReport() {
+      const f = STATE.farmProfile;
+      const n = STATE.nasaData;
+      const rec = STATE.recommendations[STATE.selectedStrategyIdx] || STATE.recommendations[0];
+      if (!f || !n || !rec) return;
+      document.getElementById("report-timestamp").textContent =
+        `Generated: ${new Date(n.retrievedAt).toLocaleString()} | District: ${f.district}, ${f.state} (${f.latitude}°N, ${f.longitude}°E)`;
+
+      document.getElementById("report-body").innerHTML = `
+        <div class="grid-3" style="margin-bottom:16px;">
+          <div class="card">
+            <h3>1. Farm & Soil Profile</h3>
+            <p style="font-size:12px;">
+              <strong>Location:</strong> ${f.district}, ${f.state} (${f.latitude}°N, ${f.longitude}°E)<br/>
+              <strong>Farm Size:</strong> ${f.area} ${f.areaUnit}<br/>
+              <strong>Soil Type:</strong> ${f.soilType.replace(/_/g, " ")}<br/>
+              <strong>Soil Test:</strong> pH ${f.soilPH ?? "Unknown"}, OC ${f.organicCarbonPercent ?? "Unknown"}%, NPK ${f.nitrogenKgHa ?? "?"}/${f.phosphorusKgHa ?? "?"}/${f.potassiumKgHa ?? "?"} kg/ha<br/>
+              <strong>Previous Crop:</strong> ${f.previousCrop} | <strong>Irrigation:</strong> ${f.irrigationType.replace(/_/g, " ")}
+            </p>
+          </div>
+          <div class="card">
+            <h3>2. NASA Environmental Summary</h3>
+            <p style="font-size:12px;">
+              <strong>Dataset:</strong> ${n.product}<br/>
+              <strong>Mean Annual Rain:</strong> ${n.indicators.meanAnnualRainMm} mm (CV ${n.indicators.annualRainCvPercent}%)<br/>
+              <strong>Max Kharif Dry Spell:</strong> ${n.indicators.avgLongestKharifDrySpellDays} days<br/>
+              <strong>Mean Temp:</strong> ${n.indicators.meanAnnualTempC} °C<br/>
+              <strong>Root-Zone / Surface Wetness:</strong> ${n.indicators.meanRootZoneSoilWetness} / ${n.indicators.meanSurfaceSoilWetness}
+            </p>
+          </div>
+          <div class="card">
+            <h3>3. Confidence & Limitations</h3>
+            <p style="font-size:12px;">
+              <strong>Confidence Level:</strong> ${rec.confidence.level} (${rec.confidence.scorePercent}%)<br/>
+              <strong>Missing Inputs:</strong> ${rec.confidence.missingEvidenceItems.length ? rec.confidence.missingEvidenceItems.join("; ") : "None (Complete soil profile)"}
+            </p>
+          </div>
+        </div>
+
+        <h3>Selected Rotation Strategy: ${rec.strategyTitle} (${rec.totalScore}/100)</h3>
+        <p style="font-size:13px;margin-bottom:8px;">${rec.explanation}</p>
+        <p style="font-size:13px;background:#ecfdf5;padding:8px;border-radius:8px;margin-bottom:12px;">${rec.kannadaSummary}</p>
+
+        <h3>Evidence & Agronomic Citations</h3>
+        <ul style="font-size:12px;padding-left:18px;">
+          ${rec.evidenceSources.map(s => `<li><strong>${s.institution}:</strong> <a href="${s.url}" target="_blank" rel="noopener">${s.title}</a> (${s.url})</li>`).join("")}
+        </ul>
+      `;
+    }
+
+    async function bootstrap() {
+      initMap();
+      const res = await fetch("/api/crops");
+      const json = await res.json();
+      STATE.crops = json.crops;
+      STATE.regions = json.pilotRegions;
+
+      const regSel = document.getElementById("region-select");
+      regSel.innerHTML = STATE.regions.map(r => `<option value="${r.id}">${r.name}</option>`).join("");
+
+      const cropOpts = STATE.crops.map(c => `<option value="${c.id}">${c.name} (${c.kannadaName})</option>`).join("");
+      document.getElementById("f-prev").innerHTML = cropOpts;
+      document.getElementById("sim-s1").innerHTML = cropOpts;
+      document.getElementById("sim-s2").innerHTML = cropOpts;
+      document.getElementById("sim-s3").innerHTML = cropOpts;
+
+      document.getElementById("f-prev").value = "maize";
+      document.getElementById("sim-s1").value = "groundnut";
+      document.getElementById("sim-s2").value = "ragi";
+      document.getElementById("sim-s3").value = "greengram";
+
+      await submitFarmAndAnalyze(false);
+    }
+
+    window.addEventListener("DOMContentLoaded", bootstrap);
+  </script>
+</body>
+</html>

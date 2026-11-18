@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+*.tsbuildinfo
+
+# Python-generated cache files
+__pycache__/
+*.py[cod]
+.pytest_cache/
