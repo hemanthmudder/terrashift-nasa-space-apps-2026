@@ -1,0 +1,1628 @@
+{
+  "schema_version": "1.0",
+  "region": {
+    "id": "ia-story-19169",
+    "name": "Story County, Iowa",
+    "fips": "19169",
+    "ssurgo_area": "IA169",
+    "internal_point": [
+      42.0375,
+      -93.4661
+    ],
+    "land_area_km2": 1482.88
+  },
+  "period": {
+    "start": "1991-01-01",
+    "end": "2025-12-31",
+    "baseline": "1991-2020"
+  },
+  "climate_by_season": [
+    {
+      "year": 1991,
+      "season": "Apr-Oct",
+      "gdd_c": 1846.86,
+      "precip_mm": 798.08,
+      "precip_anomaly_pct": 13.67,
+      "days_tmax_ge_32c": 7,
+      "longest_dry_spell_days": 18,
+      "soil_wet_root_mean": 0.5451,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1992,
+      "season": "Apr-Oct",
+      "gdd_c": 1496.44,
+      "precip_mm": 627.42,
+      "precip_anomaly_pct": -10.64,
+      "days_tmax_ge_32c": 1,
+      "longest_dry_spell_days": 22,
+      "soil_wet_root_mean": 0.5132,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1993,
+      "season": "Apr-Oct",
+      "gdd_c": 1480.3,
+      "precip_mm": 1164.84,
+      "precip_anomaly_pct": 65.91,
+      "days_tmax_ge_32c": 0,
+      "longest_dry_spell_days": 11,
+      "soil_wet_root_mean": 0.7773,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1994,
+      "season": "Apr-Oct",
+      "gdd_c": 1713.03,
+      "precip_mm": 626.79,
+      "precip_anomaly_pct": -10.73,
+      "days_tmax_ge_32c": 2,
+      "longest_dry_spell_days": 13,
+      "soil_wet_root_mean": 0.5582,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1995,
+      "season": "Apr-Oct",
+      "gdd_c": 1707.66,
+      "precip_mm": 692.89,
+      "precip_anomaly_pct": -1.31,
+      "days_tmax_ge_32c": 11,
+      "longest_dry_spell_days": 14,
+      "soil_wet_root_mean": 0.5113,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1996,
+      "season": "Apr-Oct",
+      "gdd_c": 1645.05,
+      "precip_mm": 734.56,
+      "precip_anomaly_pct": 4.62,
+      "days_tmax_ge_32c": 1,
+      "longest_dry_spell_days": 13,
+      "soil_wet_root_mean": 0.4816,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1997,
+      "season": "Apr-Oct",
+      "gdd_c": 1818.32,
+      "precip_mm": 560.66,
+      "precip_anomaly_pct": -20.15,
+      "days_tmax_ge_32c": 26,
+      "longest_dry_spell_days": 14,
+      "soil_wet_root_mean": 0.4681,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1998,
+      "season": "Apr-Oct",
+      "gdd_c": 1899.32,
+      "precip_mm": 781.18,
+      "precip_anomaly_pct": 11.26,
+      "days_tmax_ge_32c": 7,
+      "longest_dry_spell_days": 13,
+      "soil_wet_root_mean": 0.5131,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 1999,
+      "season": "Apr-Oct",
+      "gdd_c": 1815.37,
+      "precip_mm": 701.88,
+      "precip_anomaly_pct": -0.03,
+      "days_tmax_ge_32c": 24,
+      "longest_dry_spell_days": 6,
+      "soil_wet_root_mean": 0.4642,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2000,
+      "season": "Apr-Oct",
+      "gdd_c": 2017.13,
+      "precip_mm": 532.54,
+      "precip_anomaly_pct": -24.15,
+      "days_tmax_ge_32c": 33,
+      "longest_dry_spell_days": 9,
+      "soil_wet_root_mean": 0.4111,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2001,
+      "season": "Apr-Oct",
+      "gdd_c": 1818.75,
+      "precip_mm": 672.42,
+      "precip_anomaly_pct": -4.23,
+      "days_tmax_ge_32c": 27,
+      "longest_dry_spell_days": 8,
+      "soil_wet_root_mean": 0.4746,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2002,
+      "season": "Apr-Oct",
+      "gdd_c": 1887.3,
+      "precip_mm": 684.78,
+      "precip_anomaly_pct": -2.47,
+      "days_tmax_ge_32c": 40,
+      "longest_dry_spell_days": 10,
+      "soil_wet_root_mean": 0.4462,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2003,
+      "season": "Apr-Oct",
+      "gdd_c": 1845.74,
+      "precip_mm": 555.29,
+      "precip_anomaly_pct": -20.91,
+      "days_tmax_ge_32c": 24,
+      "longest_dry_spell_days": 14,
+      "soil_wet_root_mean": 0.4407,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2004,
+      "season": "Apr-Oct",
+      "gdd_c": 1760.33,
+      "precip_mm": 612.69,
+      "precip_anomaly_pct": -12.73,
+      "days_tmax_ge_32c": 1,
+      "longest_dry_spell_days": 15,
+      "soil_wet_root_mean": 0.4708,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2005,
+      "season": "Apr-Oct",
+      "gdd_c": 2058.24,
+      "precip_mm": 552.01,
+      "precip_anomaly_pct": -21.38,
+      "days_tmax_ge_32c": 45,
+      "longest_dry_spell_days": 13,
+      "soil_wet_root_mean": 0.4318,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2006,
+      "season": "Apr-Oct",
+      "gdd_c": 1945.14,
+      "precip_mm": 571.23,
+      "precip_anomaly_pct": -18.64,
+      "days_tmax_ge_32c": 31,
+      "longest_dry_spell_days": 10,
+      "soil_wet_root_mean": 0.4361,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2007,
+      "season": "Apr-Oct",
+      "gdd_c": 1925.65,
+      "precip_mm": 850.66,
+      "precip_anomaly_pct": 21.16,
+      "days_tmax_ge_32c": 15,
+      "longest_dry_spell_days": 13,
+      "soil_wet_root_mean": 0.5195,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2008,
+      "season": "Apr-Oct",
+      "gdd_c": 1627.9,
+      "precip_mm": 912.71,
+      "precip_anomaly_pct": 30.0,
+      "days_tmax_ge_32c": 0,
+      "longest_dry_spell_days": 8,
+      "soil_wet_root_mean": 0.5869,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2009,
+      "season": "Apr-Oct",
+      "gdd_c": 1544.96,
+      "precip_mm": 741.14,
+      "precip_anomaly_pct": 5.56,
+      "days_tmax_ge_32c": 3,
+      "longest_dry_spell_days": 24,
+      "soil_wet_root_mean": 0.529,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2010,
+      "season": "Apr-Oct",
+      "gdd_c": 1869.99,
+      "precip_mm": 1015.3,
+      "precip_anomaly_pct": 44.61,
+      "days_tmax_ge_32c": 1,
+      "longest_dry_spell_days": 16,
+      "soil_wet_root_mean": 0.6347,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2011,
+      "season": "Apr-Oct",
+      "gdd_c": 1855.54,
+      "precip_mm": 559.3,
+      "precip_anomaly_pct": -20.34,
+      "days_tmax_ge_32c": 17,
+      "longest_dry_spell_days": 19,
+      "soil_wet_root_mean": 0.5037,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2012,
+      "season": "Apr-Oct",
+      "gdd_c": 2063.05,
+      "precip_mm": 438.22,
+      "precip_anomaly_pct": -37.58,
+      "days_tmax_ge_32c": 58,
+      "longest_dry_spell_days": 21,
+      "soil_wet_root_mean": 0.4107,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2013,
+      "season": "Apr-Oct",
+      "gdd_c": 1818.27,
+      "precip_mm": 615.92,
+      "precip_anomaly_pct": -12.27,
+      "days_tmax_ge_32c": 21,
+      "longest_dry_spell_days": 15,
+      "soil_wet_root_mean": 0.4873,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2014,
+      "season": "Apr-Oct",
+      "gdd_c": 1698.33,
+      "precip_mm": 871.01,
+      "precip_anomaly_pct": 24.06,
+      "days_tmax_ge_32c": 0,
+      "longest_dry_spell_days": 12,
+      "soil_wet_root_mean": 0.5105,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2015,
+      "season": "Apr-Oct",
+      "gdd_c": 1802.66,
+      "precip_mm": 823.43,
+      "precip_anomaly_pct": 17.28,
+      "days_tmax_ge_32c": 3,
+      "longest_dry_spell_days": 21,
+      "soil_wet_root_mean": 0.4992,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2016,
+      "season": "Apr-Oct",
+      "gdd_c": 1934.65,
+      "precip_mm": 694.97,
+      "precip_anomaly_pct": -1.02,
+      "days_tmax_ge_32c": 5,
+      "longest_dry_spell_days": 12,
+      "soil_wet_root_mean": 0.5211,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2017,
+      "season": "Apr-Oct",
+      "gdd_c": 1960.22,
+      "precip_mm": 579.54,
+      "precip_anomaly_pct": -17.46,
+      "days_tmax_ge_32c": 27,
+      "longest_dry_spell_days": 19,
+      "soil_wet_root_mean": 0.466,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2018,
+      "season": "Apr-Oct",
+      "gdd_c": 1920.65,
+      "precip_mm": 853.16,
+      "precip_anomaly_pct": 21.52,
+      "days_tmax_ge_32c": 20,
+      "longest_dry_spell_days": 12,
+      "soil_wet_root_mean": 0.5045,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2019,
+      "season": "Apr-Oct",
+      "gdd_c": 1770.34,
+      "precip_mm": 766.09,
+      "precip_anomaly_pct": 9.11,
+      "days_tmax_ge_32c": 0,
+      "longest_dry_spell_days": 8,
+      "soil_wet_root_mean": 0.5845,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2020,
+      "season": "Apr-Oct",
+      "gdd_c": 1835.84,
+      "precip_mm": 472.24,
+      "precip_anomaly_pct": -32.74,
+      "days_tmax_ge_32c": 22,
+      "longest_dry_spell_days": 14,
+      "soil_wet_root_mean": 0.4774,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2021,
+      "season": "Apr-Oct",
+      "gdd_c": 2112.51,
+      "precip_mm": 507.07,
+      "precip_anomaly_pct": -27.78,
+      "days_tmax_ge_32c": 47,
+      "longest_dry_spell_days": 21,
+      "soil_wet_root_mean": 0.4236,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2022,
+      "season": "Apr-Oct",
+      "gdd_c": 1984.61,
+      "precip_mm": 498.05,
+      "precip_anomaly_pct": -29.06,
+      "days_tmax_ge_32c": 35,
+      "longest_dry_spell_days": 11,
+      "soil_wet_root_mean": 0.4432,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2023,
+      "season": "Apr-Oct",
+      "gdd_c": 2094.01,
+      "precip_mm": 445.53,
+      "precip_anomaly_pct": -36.54,
+      "days_tmax_ge_32c": 35,
+      "longest_dry_spell_days": 16,
+      "soil_wet_root_mean": 0.4267,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2024,
+      "season": "Apr-Oct",
+      "gdd_c": 2085.22,
+      "precip_mm": 667.25,
+      "precip_anomaly_pct": -4.96,
+      "days_tmax_ge_32c": 18,
+      "longest_dry_spell_days": 29,
+      "soil_wet_root_mean": 0.4506,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    },
+    {
+      "year": 2025,
+      "season": "Apr-Oct",
+      "gdd_c": 1991.42,
+      "precip_mm": 770.64,
+      "precip_anomaly_pct": 9.76,
+      "days_tmax_ge_32c": 8,
+      "longest_dry_spell_days": 14,
+      "soil_wet_root_mean": 0.4929,
+      "missing_days": 0,
+      "missing_days_by_indicator": {
+        "gdd_c": 0,
+        "precip_mm": 0,
+        "days_tmax_ge_32c": 0,
+        "longest_dry_spell_days": 0,
+        "soil_wet_root_mean": 0
+      },
+      "metric_provenance": {
+        "gdd_c": {
+          "provenance": "computed",
+          "method": "Sum of daily gdd_c values; METHODOLOGY.md section 3."
+        },
+        "precip_mm": {
+          "provenance": "computed",
+          "method": "Sum of daily precipitation from 1 April through 31 October."
+        },
+        "precip_anomaly_pct": {
+          "provenance": "computed",
+          "method": "Season total compared with the arithmetic mean of 1991-2020 seasonal totals."
+        },
+        "days_tmax_ge_32c": {
+          "provenance": "computed",
+          "method": "Count of growing-season days with tmax_c greater than or equal to 32."
+        },
+        "longest_dry_spell_days": {
+          "provenance": "computed",
+          "method": "Longest consecutive run of growing-season days with precip_mm below 1."
+        },
+        "soil_wet_root_mean": {
+          "provenance": "computed",
+          "method": "Mean NASA POWER GWETROOT model wetness; unitless and not volumetric soil moisture."
+        }
+      },
+      "source": "nasa_power"
+    }
+  ],
+  "soils": {
+    "source": "ssurgo",
+    "dominant_map_units": [],
+    "aws_0_100cm_mm_weighted": null,
+    "aws_method_status": "pending",
+    "drainage_class_pct": {}
+  },
+  "land_cover": {
+    "source": "cdl",
+    "years": [
+      2008,
+      2025
+    ],
+    "corn_pct": null,
+    "soy_pct": null,
+    "corn_soy_alternation_pct": null,
+    "estimate_type": "remotely_sensed"
+  },
+  "resolution_notes": [
+    "NASA POWER values are from the source grid cell at the Census internal point, not a county-wide spatial average.",
+    "Solar radiation source changes in 2001 (SRB to CERES SYN1deg).",
+    "Soil and land-cover metrics remain pending until their source datasets and aggregation methods are verified.",
+    "Seasonal indicators with missing required daily values are not published because the completeness threshold is pending."
+  ],
+  "sources": [
+    {
+      "id": "nasa_power",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,T2M_MAX,T2M_MIN,PRECTOTCORR,RH2M,WS2M,ALLSKY_SFC_SW_DWN,GWETTOP,GWETROOT&community=AG&longitude=-93.4661&latitude=42.0375&start=19910101&end=20251231&format=JSON",
+      "version": "v2.10.3",
+      "retrieved": "2026-11-15T08:42:55Z"
+    }
+  ]
+}

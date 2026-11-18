@@ -1,0 +1,421 @@
+{
+  "schema_version": "1.0",
+  "region_id": "ia-story-19169",
+  "disclaimer": "Decision support only; not a yield forecast.",
+  "rotations": [
+    {
+      "id": "cs2",
+      "name": "Corn-Soybean (2-yr)",
+      "sequence": [
+        "corn",
+        "soybean"
+      ],
+      "baseline": true
+    },
+    {
+      "id": "cso3",
+      "name": "Corn-Soybean-Small grain + Red clover (3-yr)",
+      "sequence": [
+        "corn",
+        "soybean",
+        "oat_redclover"
+      ],
+      "baseline": false
+    },
+    {
+      "id": "csoa4",
+      "name": "Corn-Soybean-Small grain + Alfalfa-Alfalfa (4-yr)",
+      "sequence": [
+        "corn",
+        "soybean",
+        "oat_alfalfa",
+        "alfalfa"
+      ],
+      "baseline": false
+    }
+  ],
+  "metrics": [
+    {
+      "rotation_id": "cso3",
+      "metric": "corn_yield_vs_baseline_pct",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "cso3",
+      "metric": "soybean_yield_vs_baseline_pct",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "cso3",
+      "metric": "herbicide_use_vs_baseline_pct",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "cso3",
+      "metric": "profitability",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "cso3",
+      "metric": "water_demand",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "cso3",
+      "metric": "nitrogen_requirement_or_losses",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "cso3",
+      "metric": "erosion",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "csoa4",
+      "metric": "corn_yield_vs_baseline_pct",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "csoa4",
+      "metric": "soybean_yield_vs_baseline_pct",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "csoa4",
+      "metric": "herbicide_use_vs_baseline_pct",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "csoa4",
+      "metric": "profitability",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "csoa4",
+      "metric": "water_demand",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "csoa4",
+      "metric": "nitrogen_requirement_or_losses",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    },
+    {
+      "rotation_id": "csoa4",
+      "metric": "erosion",
+      "value": null,
+      "provenance": "pending",
+      "citation": null,
+      "applicability": null,
+      "confidence": null,
+      "status": "pending"
+    }
+  ],
+  "climate_stress_context": [
+    {
+      "indicator": "longest_dry_spell_days",
+      "trend": "not_assessed",
+      "relevance": "The 2025 growing season recorded 14 consecutive days with precipitation below 1 mm. This is climate context, not a crop water-demand estimate.",
+      "year": 2025,
+      "value": 14,
+      "unit": "days",
+      "baseline_1991_2020_mean": 13.9,
+      "seasons_with_value": 35,
+      "missing_days_in_year": 0,
+      "provenance": "computed",
+      "method": "Longest run of growing-season days with precip_mm below 1 (METHODOLOGY.md section 3)."
+    },
+    {
+      "indicator": "precipitation_anomaly_pct",
+      "trend": "not_assessed",
+      "relevance": "The 2025 growing-season precipitation total was +9.76% relative to the 1991-2020 seasonal baseline. This is not a yield forecast.",
+      "year": 2025,
+      "value": 9.76,
+      "unit": "percent",
+      "baseline_1991_2020_mean": null,
+      "seasons_with_value": 35,
+      "missing_days_in_year": null,
+      "provenance": "computed",
+      "method": "Season total versus the 1991-2020 mean seasonal total, in percent (METHODOLOGY.md section 3)."
+    },
+    {
+      "indicator": "gdd_c",
+      "trend": "not_assessed",
+      "relevance": "Corn growing degree days for 2025: 1991.42 (1991-2020 mean 1812.77). Climate context only; it is not evidence about the relative yield of any rotation.",
+      "year": 2025,
+      "value": 1991.42,
+      "unit": "degC_day",
+      "baseline_1991_2020_mean": 1812.77,
+      "seasons_with_value": 35,
+      "missing_days_in_year": 0,
+      "provenance": "computed",
+      "method": "Sum of daily corn growing degree days, 1 Apr-31 Oct (METHODOLOGY.md section 3)."
+    },
+    {
+      "indicator": "precip_mm",
+      "trend": "not_assessed",
+      "relevance": "Growing-season precipitation for 2025: 770.64 (1991-2020 mean 702.1). Climate context only; it is not evidence about the relative yield of any rotation.",
+      "year": 2025,
+      "value": 770.64,
+      "unit": "mm",
+      "baseline_1991_2020_mean": 702.1,
+      "seasons_with_value": 35,
+      "missing_days_in_year": 0,
+      "provenance": "computed",
+      "method": "Sum of daily precipitation, 1 Apr-31 Oct."
+    },
+    {
+      "indicator": "days_tmax_ge_32c",
+      "trend": "not_assessed",
+      "relevance": "Heat days (Tmax at least 32 C) for 2025: 8 (1991-2020 mean 15.73). Climate context only; it is not evidence about the relative yield of any rotation.",
+      "year": 2025,
+      "value": 8,
+      "unit": "days",
+      "baseline_1991_2020_mean": 15.73,
+      "seasons_with_value": 35,
+      "missing_days_in_year": 0,
+      "provenance": "computed",
+      "method": "Count of growing-season days with tmax_c of at least 32 (METHODOLOGY.md section 3)."
+    },
+    {
+      "indicator": "soil_wet_root_mean",
+      "trend": "not_assessed",
+      "relevance": "Mean root-zone soil wetness (NASA POWER GWETROOT model index) for 2025: 0.4929 (1991-2020 mean 0.51). Climate context only; it is not evidence about the relative yield of any rotation.",
+      "year": 2025,
+      "value": 0.4929,
+      "unit": "unitless_0_1",
+      "baseline_1991_2020_mean": 0.51,
+      "seasons_with_value": 35,
+      "missing_days_in_year": 0,
+      "provenance": "computed",
+      "method": "Mean NASA POWER GWETROOT model wetness; unitless, not volumetric soil moisture."
+    },
+    {
+      "indicator": "missing_days",
+      "trend": "not_assessed",
+      "relevance": "All required daily values were present for the 2025 growing season.",
+      "year": 2025,
+      "value": 0,
+      "unit": "days",
+      "baseline_1991_2020_mean": null,
+      "seasons_with_value": 35,
+      "missing_days_in_year": null,
+      "provenance": "computed",
+      "method": "Growing-season days with any required daily value missing."
+    }
+  ],
+  "research_comparisons": [],
+  "rotation_profiles": [
+    {
+      "rotation_id": "cs2",
+      "name": "Corn-Soybean (2-yr)",
+      "baseline": true,
+      "compared_with": null,
+      "duration_years": 2,
+      "phases": [
+        {
+          "year": 1,
+          "crop": "corn",
+          "description": "Corn (maize) for grain"
+        },
+        {
+          "year": 2,
+          "crop": "soybean",
+          "description": "Soybean for grain"
+        }
+      ],
+      "crops": [
+        "corn",
+        "soybean"
+      ],
+      "includes_forage_legume_phase": false,
+      "supported_metrics": [],
+      "pending_metrics": [],
+      "pooled_research_comparisons": [],
+      "comparator_in_research_comparisons": [],
+      "evidence_summary": "Baseline rotation. Comparison metrics for the other rotations are expressed relative to this system; it has no comparison metrics itself."
+    },
+    {
+      "rotation_id": "cso3",
+      "name": "Corn-Soybean-Small grain + Red clover (3-yr)",
+      "baseline": false,
+      "compared_with": "cs2",
+      "duration_years": 3,
+      "phases": [
+        {
+          "year": 1,
+          "crop": "corn",
+          "description": "Corn (maize) for grain"
+        },
+        {
+          "year": 2,
+          "crop": "soybean",
+          "description": "Soybean for grain"
+        },
+        {
+          "year": 3,
+          "crop": "oat_redclover",
+          "description": "Small grain (oat) with red clover"
+        }
+      ],
+      "crops": [
+        "corn",
+        "soybean",
+        "oat_redclover"
+      ],
+      "includes_forage_legume_phase": true,
+      "supported_metrics": [],
+      "pending_metrics": [
+        "corn_yield_vs_baseline_pct",
+        "erosion",
+        "herbicide_use_vs_baseline_pct",
+        "nitrogen_requirement_or_losses",
+        "profitability",
+        "soybean_yield_vs_baseline_pct",
+        "water_demand"
+      ],
+      "pooled_research_comparisons": [],
+      "comparator_in_research_comparisons": [],
+      "evidence_summary": "No approved rotation-specific evidence; every comparison metric is pending. This is not evidence that the rotation performs worse or better than the baseline."
+    },
+    {
+      "rotation_id": "csoa4",
+      "name": "Corn-Soybean-Small grain + Alfalfa-Alfalfa (4-yr)",
+      "baseline": false,
+      "compared_with": "cs2",
+      "duration_years": 4,
+      "phases": [
+        {
+          "year": 1,
+          "crop": "corn",
+          "description": "Corn (maize) for grain"
+        },
+        {
+          "year": 2,
+          "crop": "soybean",
+          "description": "Soybean for grain"
+        },
+        {
+          "year": 3,
+          "crop": "oat_alfalfa",
+          "description": "Small grain (oat) with alfalfa establishment"
+        },
+        {
+          "year": 4,
+          "crop": "alfalfa",
+          "description": "Alfalfa (perennial forage legume)"
+        }
+      ],
+      "crops": [
+        "corn",
+        "soybean",
+        "oat_alfalfa",
+        "alfalfa"
+      ],
+      "includes_forage_legume_phase": true,
+      "supported_metrics": [],
+      "pending_metrics": [
+        "corn_yield_vs_baseline_pct",
+        "erosion",
+        "herbicide_use_vs_baseline_pct",
+        "nitrogen_requirement_or_losses",
+        "profitability",
+        "soybean_yield_vs_baseline_pct",
+        "water_demand"
+      ],
+      "pooled_research_comparisons": [],
+      "comparator_in_research_comparisons": [],
+      "evidence_summary": "No approved rotation-specific evidence; every comparison metric is pending. This is not evidence that the rotation performs worse or better than the baseline."
+    }
+  ],
+  "input_readiness": {
+    "climate": {
+      "status": "available",
+      "source": "nasa_power",
+      "seasons": 35,
+      "first_year": 1991,
+      "last_year": 2025,
+      "seasons_with_missing_days": [],
+      "used_for": "Descriptive climate context only."
+    },
+    "soils": {
+      "status": "pending",
+      "source": "ssurgo",
+      "reason": "No verified SSURGO summary (available water storage method pending); no soil values are estimated or substituted.",
+      "used_for": null
+    },
+    "land_cover": {
+      "status": "pending",
+      "source": "cdl",
+      "estimate_type": "remotely_sensed",
+      "reason": "CDL county estimates not yet produced; no crop history is inferred or invented.",
+      "used_for": null
+    }
+  },
+  "evidence_sources": []
+}
